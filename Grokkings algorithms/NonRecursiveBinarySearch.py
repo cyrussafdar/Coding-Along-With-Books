@@ -7,18 +7,14 @@ Created on Tue Dec 14 09:23:25 2021
 """
 A=[1,2,3,4,5,6,7]
 B=[1,2,7,9,13,19]
-def NonRecursiveBinarySearch(List,value):
-    low=0
-    high=len(List)
-    while(low<=high):
-        mid=(high+low)//2
-        guess=List[mid]
-        if(guess==value):
-            return mid
-        if(guess>value):
-            high=mid-1
-        else: #guess>value
-            low=mid+1
-    #when nothing is found
-    return None
-            
+def NonRecursiveBinarySearch(nums,target):
+        low, high = 0, len(nums) - 1
+        while low <= high:
+            mid = (high + low) // 2
+            if nums[mid] == target:
+                return mid
+            if target < nums[mid]:
+                high = mid - 1
+            else:
+                low = mid + 1
+        return -1
