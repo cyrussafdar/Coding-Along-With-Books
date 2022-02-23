@@ -24,10 +24,9 @@ def lin_optimization(Budget,Office_space):
     cab_types=[x,y,z]
     MaxCabs=dict()
     solution=[0]*4
-    highestCap=0
     #intialising the dictionary
     for i in cab_types:
-        MaxCabs[i]=max(Budget//i.price,Office_space//i.space)
+        MaxCabs[i]=min(Budget//i.price,Office_space//i.space)
         
     Total_cost=0
     Total_space=0
@@ -46,9 +45,10 @@ def lin_optimization(Budget,Office_space):
                     current_cost+=candidate_sol[l]*cab_types[l].price
                     current_space+=candidate_sol[l]*cab_types[l].space
                     current_cap+=candidate_sol[l]*cab_types[l].capacity
-            
-                if(highestCap<current_cap and current_cost>=Budget and Office_space>=current_space):
-                    solution=[i,j]
+                #print(candidate_sol)
+                if(Total_cap<current_cap and Budget>=current_cost and Office_space>=current_space):
+                    
+                    solution=candidate_sol
                     Total_cost=current_cost
                     Total_space=current_space
                     Total_cap=current_cap
