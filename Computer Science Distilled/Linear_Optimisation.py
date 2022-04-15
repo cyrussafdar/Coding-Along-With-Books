@@ -20,10 +20,10 @@ def lin_optimization(Budget,Office_space):
     #To add more cabinet types add here and add more nested loops
     x=Cabinet(10,6,8)
     y=Cabinet(20,8,12)
-    z=Cabinet(30,12,14)
+    z=Cabinet(1,1,1)
     cab_types=[x,y,z]
     MaxCabs=dict()
-    solution=[0]*4
+    solution=[0]*len(cab_types)
     #intialising the dictionary
     for i in cab_types:
         MaxCabs[i]=min(Budget//i.price,Office_space//i.space)
